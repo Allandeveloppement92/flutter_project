@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
-import 'package:yuka/ecran_vide.dart';
+
+import 'ecran_detail.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       //home: ControlYourHome(),
-      home: HomePage(),
+      home: DetailsScreen(),
     );
   }
 }
