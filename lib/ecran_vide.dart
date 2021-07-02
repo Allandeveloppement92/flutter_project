@@ -5,6 +5,8 @@ import 'package:yuka/app_icons.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
 import 'package:yuka/res/resources.dart';
 
+import 'ecran_detail.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -32,7 +34,12 @@ class HomePage extends StatelessWidget {
           ),
           actions: <Widget>[
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsScreen()),
+                );
+              },
               icon: const Icon(
                 AppIcons.barcode,
               ),
@@ -59,7 +66,12 @@ class HomePage extends StatelessWidget {
                   height: 20.0,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailsScreen()),
+                    );
+                  },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20.0,

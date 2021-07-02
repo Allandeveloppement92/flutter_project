@@ -9,6 +9,7 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color primaryColor = Theme.of(context).primaryColor;
     Product product = Product(
       barcode: '12345678',
       name: 'Petits pois et carotes',
@@ -22,6 +23,10 @@ class DetailsScreen extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               ProductImage(),
+              AppBar(
+                elevation: 0.0,
+                backgroundColor: AppColors.trans,
+              ),
               Positioned(
                 left: 0.0,
                 right: 0.0,
@@ -44,8 +49,11 @@ class ProductImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 300.0,
-      color: AppColors.blueLight,
+      height: 500.0,
+      child: Image.network(
+        'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+        fit: BoxFit.cover,
+      ),
     );
   }
 }
@@ -128,16 +136,29 @@ class ProductTitle extends StatelessWidget {
       children: [
         Text(
           product.name ?? '',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 40, color: AppColors.blue),
         ),
         const SizedBox(
           height: 8.0,
         ),
-        Text(product.brands?.join(',') ?? ''),
-        const SizedBox(
-          height: 8.0,
+        Text(
+          product.brands?.join(',') ?? '',
+          style: TextStyle(
+            color: AppColors.gray2,
+            fontSize: 20,
+          ),
         ),
-        Text('Ligne 3'),
+        const SizedBox(
+          height: 14.0,
+        ),
+        Text(
+          'Petits pois et carottes à l\'étuvés avec garniture',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.grey,
+          ),
+        ),
       ],
     );
   }
@@ -149,7 +170,7 @@ class ProductInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: AppColors.gray2,
+      color: AppColors.gray1,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -216,8 +237,27 @@ class ProductInfoNova extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('Groupe Nova'),
-        Text('Lorem ipsum'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Groupe Nova',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.blue,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Produits alimentaires et boissons ultra-transformées ',
+            style: TextStyle(
+              fontSize: 15,
+              color: AppColors.gray2,
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -262,7 +302,7 @@ class ProductFields extends StatelessWidget {
       children: [
         ProductField(
           label: 'Quantité',
-          value: '200g',
+          value: '200g (égoutté 130g)',
           divider: true,
         ),
         ProductField(

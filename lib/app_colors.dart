@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 class AppColors {
   static const Color blue = Color(0xff080040);
+  static const Color trans = Color(0x2000000);
   static const Color blueDark = Color(0xff050027);
   static const Color yellow = Color(0xffFBAF02);
   static const Color blueLight = Color(0xff41C7DF);
