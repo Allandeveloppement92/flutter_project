@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       //home: ControlYourHome(),
+      //home: HomePage(),
+      //home: CaracteristiquesScreen(),
       home: HomePage(),
     );
   }

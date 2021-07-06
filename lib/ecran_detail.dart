@@ -63,7 +63,7 @@ class ProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const borderRadius = BorderRadius.only(
+    const BorderRadius borderRadius = BorderRadius.only(
       topLeft: Radius.circular(16.0),
       topRight: Radius.circular(16.0),
     );
@@ -83,7 +83,7 @@ class ProductDetails extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 ProductTitle(),
                 const SizedBox(
                   height: 10.0,
@@ -93,6 +93,7 @@ class ProductDetails extends StatelessWidget {
                   height: 10.0,
                 ),
                 ProductFields(),
+                ButtonsVeg(),
               ],
             ),
           ),
@@ -133,7 +134,7 @@ class ProductTitle extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: <Widget>[
         Text(
           product.name ?? '',
           style: TextStyle(
@@ -159,6 +160,9 @@ class ProductTitle extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
+        const SizedBox(
+          height: 25.0,
+        ),
       ],
     );
   }
@@ -174,7 +178,7 @@ class ProductInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
-        children: [
+        children: <Widget>[
           ProductInfoLine1(),
           Divider(),
           ProductInfoLine2(),
@@ -193,15 +197,12 @@ class ProductInfoLine1 extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
-        children: [
+        children: <Widget>[
           Expanded(
             flex: 45,
             child: ProductInfoNutriScore(),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Divider(),
-          ),
+          Divider(),
           Expanded(
             flex: 55,
             child: ProductInfoNova(),
@@ -220,9 +221,25 @@ class ProductInfoNutriScore extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Nutri-Score'),
-        Image.asset(AppImages.nutriscoreA),
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Nutri-Score',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.blue,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            AppImages.nutriscoreA,
+            width: 90,
+          ),
+        ),
       ],
     );
   }
@@ -236,7 +253,7 @@ class ProductInfoNova extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
@@ -273,16 +290,41 @@ class ProductInfoLine2 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('EcoScore'),
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'EcoScore',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.blue,
+              ),
+            ),
+          ),
           Row(
-            children: [
-              Icon(AppIcons.ecoscore_a),
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  AppIcons.ecoscoreD,
+                  color: AppColors.nutriscoreD,
+                ),
+              ),
               const SizedBox(
                 width: 10.0,
               ),
               Expanded(
-                child: Text('Impact environnemental'),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Impact environnemental élevé',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: AppColors.gray2,
+                    ),
+                  ),
+                ),
               ),
             ],
           )
@@ -299,16 +341,22 @@ class ProductFields extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        ProductField(
-          label: 'Quantité',
-          value: '200g (égoutté 130g)',
-          divider: true,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ProductField(
+            label: 'Quantité',
+            value: '200g (égoutté 130g)',
+            divider: true,
+          ),
         ),
-        ProductField(
-          label: 'Vendu',
-          value: 'France',
-          divider: false,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ProductField(
+            label: 'Vendu',
+            value: 'France',
+            divider: false,
+          ),
         ),
       ],
     );
@@ -330,20 +378,30 @@ class ProductField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-            children: [
+            children: <Widget>[
               Expanded(
                 // flex: 1,
-                child: Text(label),
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: AppColors.blue,
+                  ),
+                ),
               ),
               Expanded(
                 // flex: 1,
                 child: Text(
                   value,
                   textAlign: TextAlign.end,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ],
@@ -351,6 +409,110 @@ class ProductField extends StatelessWidget {
         ),
         Divider(),
       ],
+    );
+  }
+}
+
+class ButtonsVeg extends StatelessWidget {
+  const ButtonsVeg({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Expanded(
+          child: VegetalienButton(),
+        ),
+        const SizedBox(
+          width: 100.0,
+        ),
+        Expanded(
+          child: VegetarienButton(),
+        ),
+      ],
+    );
+  }
+}
+
+class VegetalienButton extends StatelessWidget {
+  const VegetalienButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10.0,
+          vertical: 0.0,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const Icon(
+              Icons.check,
+              color: AppColors.white,
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              'Végétalien',
+              style: TextStyle(color: AppColors.white),
+            ),
+          ],
+        ),
+      ),
+      style: OutlinedButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(12.0),
+          ),
+        ),
+        backgroundColor: AppColors.blueLight,
+      ),
+    );
+  }
+}
+
+class VegetarienButton extends StatelessWidget {
+  const VegetarienButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10.0,
+          vertical: 0.0,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const Icon(
+              Icons.close,
+              color: AppColors.white,
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              'Végétarien',
+              style: TextStyle(color: AppColors.white),
+            ),
+          ],
+        ),
+      ),
+      style: OutlinedButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(12.0),
+          ),
+        ),
+        backgroundColor: AppColors.blueLight,
+      ),
     );
   }
 }

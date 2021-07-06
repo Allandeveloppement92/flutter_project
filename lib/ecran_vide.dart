@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/material/page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yuka/app_colors.dart';
 import 'package:yuka/app_icons.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
+import 'package:yuka/res/navigation.dart';
 import 'package:yuka/res/resources.dart';
 
 import 'ecran_detail.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     Color primaryColor = Theme.of(context).primaryColor;
@@ -37,7 +38,8 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailsScreen()),
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => DetailsScreen()),
                 );
               },
               icon: const Icon(
@@ -69,7 +71,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DetailsScreen()),
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => Navbar()),
                     );
                   },
                   child: Padding(
