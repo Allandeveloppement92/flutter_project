@@ -1,6 +1,7 @@
 # yuka
 
-A new Flutter project.
+A new Flutter project created by Allan GERME in order to learn Flutter's Framework.
+It's possible to see severals screen linked by navigations bar.
 
 ## Getting Started
 

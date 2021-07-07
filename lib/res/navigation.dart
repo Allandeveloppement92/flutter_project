@@ -6,6 +6,7 @@ import 'package:yuka/ecran_detail.dart';
 import 'package:yuka/ecran_tableau.dart';
 
 import '../app_colors.dart';
+import 'ecran_nutrition.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _NavbarState extends State<Navbar> {
   static const List<Widget> _widgetOptions = <Widget>[
     DetailsScreen(),
     CaracteristiquesScreen(),
-    Text('Rixo la melo part 3'),
+    NutritionScreen(),
     TableauScreen(),
   ];
 
