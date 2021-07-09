@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
-import 'package:yuka/app_icons.dart';
 import 'package:yuka/res/app_product.dart';
-import 'package:yuka/res/resources.dart';
 
 class NutritionScreen extends StatelessWidget {
   const NutritionScreen({Key? key}) : super(key: key);
@@ -12,7 +10,7 @@ class NutritionScreen extends StatelessWidget {
     Color primaryColor = Theme.of(context).primaryColor;
     Product product = Product(
       barcode: '12345678',
-      name: 'Petits pois et carotes',
+      name: 'Petits pois et carottes',
       brands: <String>['Cassegrain'],
     );
 
@@ -88,12 +86,7 @@ class ProductDetails extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
-                ProductInfo(),
-                const SizedBox(
-                  height: 10.0,
-                ),
                 ProductFields(),
-                ButtonsVeg(),
               ],
             ),
           ),
@@ -131,203 +124,41 @@ class ProductTitle extends StatelessWidget {
       return SizedBox();
     }
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          product.name ?? '',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 40, color: AppColors.blue),
-        ),
-        const SizedBox(
-          height: 8.0,
-        ),
-        Text(
-          product.brands?.join(',') ?? '',
-          style: TextStyle(
-            color: AppColors.gray2,
-            fontSize: 20,
-          ),
-        ),
-        const SizedBox(
-          height: 14.0,
-        ),
-        Text(
-          'Petits pois et carottes à l\'étuvés avec garniture',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.grey,
-          ),
-        ),
-        const SizedBox(
-          height: 25.0,
-        ),
-      ],
-    );
-  }
-}
-
-class ProductInfo extends StatelessWidget {
-  const ProductInfo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.gray1,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ProductInfoLine1(),
-          Divider(),
-          ProductInfoLine2(),
-        ],
-      ),
-    );
-  }
-}
-
-class ProductInfoLine1 extends StatelessWidget {
-  const ProductInfoLine1({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
+      padding: const EdgeInsets.only(right: 20, left: 20, top: 20, bottom: 12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Expanded(
-            flex: 45,
-            child: ProductInfoNutriScore(),
-          ),
-          Divider(),
-          Expanded(
-            flex: 55,
-            child: ProductInfoNova(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProductInfoNutriScore extends StatelessWidget {
-  const ProductInfoNutriScore({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Nutri-Score',
+          Text(
+            product.name ?? '',
             style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.blue,
-            ),
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                color: AppColors.blue),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            AppImages.nutriscoreA,
-            width: 90,
+          const SizedBox(
+            height: 8.0,
           ),
-        ),
-      ],
-    );
-  }
-}
-
-class ProductInfoNova extends StatelessWidget {
-  const ProductInfoNova({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Groupe Nova',
+          Text(
+            product.brands?.join(',') ?? '',
             style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.blue,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Produits alimentaires et boissons ultra-transformées ',
-            style: TextStyle(
-              fontSize: 15,
               color: AppColors.gray2,
+              fontSize: 20,
             ),
           ),
-        ),
-      ],
-    );
-  }
-}
-
-class ProductInfoLine2 extends StatelessWidget {
-  const ProductInfoLine2({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const SizedBox(
+            height: 14.0,
+          ),
+          Center(
             child: Text(
-              'EcoScore',
+              'Repères nutritionnels pour 100g',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: AppColors.blue,
+                color: Colors.grey,
               ),
             ),
           ),
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(
-                  AppIcons.ecoscoreD,
-                  color: AppColors.nutriscoreD,
-                ),
-              ),
-              const SizedBox(
-                width: 10.0,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Impact environnemental élevé',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: AppColors.gray2,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
         ],
       ),
     );
@@ -339,38 +170,63 @@ class ProductFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Quantité',
-            value: '200g (égoutté 130g)',
-            divider: true,
+    return Padding(
+      padding: const EdgeInsets.only(right: 20, left: 20, top: 0, bottom: 0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Matières grasses / lipides',
+              gramme: '0,8g',
+              texte: 'Faible quantité',
+              divider: true,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Vendu',
-            value: 'France',
-            divider: false,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Acides gras saturés',
+              gramme: '0,1g',
+              texte: 'Faible quantité',
+              divider: true,
+            ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Sucres',
+              gramme: '5,2g',
+              texte: 'Quantité modérée',
+              divider: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Sel',
+              gramme: '0,75g',
+              texte: 'Quantité élevée',
+              divider: false,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
 
 class ProductField extends StatelessWidget {
   final String label;
-  final String value;
+  final String gramme;
+  final String texte;
   final bool divider;
 
   ProductField({
     required this.label,
-    required this.value,
+    required this.gramme,
+    required this.texte,
     this.divider = true,
   });
 
@@ -384,7 +240,7 @@ class ProductField extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Expanded(
-                // flex: 1,
+                flex: 50,
                 child: Text(
                   label,
                   style: TextStyle(
@@ -394,9 +250,20 @@ class ProductField extends StatelessWidget {
                 ),
               ),
               Expanded(
-                // flex: 1,
+                flex: 25,
                 child: Text(
-                  value,
+                  gramme,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 25,
+                child: Text(
+                  texte,
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     fontSize: 18,
@@ -407,112 +274,8 @@ class ProductField extends StatelessWidget {
             ],
           ),
         ),
-        Divider(),
+        this.divider ? Divider() : SizedBox(),
       ],
-    );
-  }
-}
-
-class ButtonsVeg extends StatelessWidget {
-  const ButtonsVeg({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Expanded(
-          child: VegetalienButton(),
-        ),
-        const SizedBox(
-          width: 100.0,
-        ),
-        Expanded(
-          child: VegetarienButton(),
-        ),
-      ],
-    );
-  }
-}
-
-class VegetalienButton extends StatelessWidget {
-  const VegetalienButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10.0,
-          vertical: 0.0,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const Icon(
-              Icons.check,
-              color: AppColors.white,
-            ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            Text(
-              'Végétalien',
-              style: TextStyle(color: AppColors.white),
-            ),
-          ],
-        ),
-      ),
-      style: OutlinedButton.styleFrom(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(12.0),
-          ),
-        ),
-        backgroundColor: AppColors.blueLight,
-      ),
-    );
-  }
-}
-
-class VegetarienButton extends StatelessWidget {
-  const VegetarienButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10.0,
-          vertical: 0.0,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const Icon(
-              Icons.close,
-              color: AppColors.white,
-            ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            Text(
-              'Végétarien',
-              style: TextStyle(color: AppColors.white),
-            ),
-          ],
-        ),
-      ),
-      style: OutlinedButton.styleFrom(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(12.0),
-          ),
-        ),
-        backgroundColor: AppColors.blueLight,
-      ),
     );
   }
 }

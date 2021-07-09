@@ -12,7 +12,7 @@ class DetailsScreen extends StatelessWidget {
     Color primaryColor = Theme.of(context).primaryColor;
     Product product = Product(
       barcode: '12345678',
-      name: 'Petits pois et carotes',
+      name: 'Petits pois et carottes',
       brands: <String>['Cassegrain'],
     );
 
@@ -131,39 +131,44 @@ class ProductTitle extends StatelessWidget {
       return SizedBox();
     }
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          product.name ?? '',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 40, color: AppColors.blue),
-        ),
-        const SizedBox(
-          height: 8.0,
-        ),
-        Text(
-          product.brands?.join(',') ?? '',
-          style: TextStyle(
-            color: AppColors.gray2,
-            fontSize: 20,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            product.name ?? '',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                color: AppColors.blue),
           ),
-        ),
-        const SizedBox(
-          height: 14.0,
-        ),
-        Text(
-          'Petits pois et carottes à l\'étuvés avec garniture',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.grey,
+          const SizedBox(
+            height: 8.0,
           ),
-        ),
-        const SizedBox(
-          height: 25.0,
-        ),
-      ],
+          Text(
+            product.brands?.join(',') ?? '',
+            style: TextStyle(
+              color: AppColors.gray2,
+              fontSize: 20,
+            ),
+          ),
+          const SizedBox(
+            height: 14.0,
+          ),
+          Text(
+            'Petits pois et carottes à l\'étuvés avec garniture',
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(
+            height: 25.0,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -257,7 +262,7 @@ class ProductInfoNova extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            'Groupe Nova',
+            'Groupe NOVA',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -286,7 +291,7 @@ class ProductInfoLine2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -339,26 +344,29 @@ class ProductFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Quantité',
-            value: '200g (égoutté 130g)',
-            divider: true,
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Quantité',
+              value: '200g (égoutté 130g)',
+              divider: true,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Vendu',
-            value: 'France',
-            divider: false,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Vendu',
+              value: 'France',
+              divider: false,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -418,19 +426,22 @@ class ButtonsVeg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Expanded(
-          child: VegetalienButton(),
-        ),
-        const SizedBox(
-          width: 100.0,
-        ),
-        Expanded(
-          child: VegetarienButton(),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Expanded(
+            child: VegetalienButton(),
+          ),
+          const SizedBox(
+            width: 100.0,
+          ),
+          Expanded(
+            child: VegetarienButton(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -445,7 +456,7 @@ class VegetalienButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 10.0,
-          vertical: 0.0,
+          vertical: 5.0,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -486,7 +497,7 @@ class VegetarienButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 10.0,
-          vertical: 0.0,
+          vertical: 5.0,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

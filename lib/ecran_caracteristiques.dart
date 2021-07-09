@@ -86,9 +86,6 @@ class ProductDetails extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
-                const SizedBox(
-                  height: 10.0,
-                ),
                 ProductFields(),
               ],
             ),
@@ -127,44 +124,49 @@ class ProductTitle extends StatelessWidget {
       return SizedBox();
     }
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          product.name ?? '',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 40, color: AppColors.blue),
-        ),
-        const SizedBox(
-          height: 8.0,
-        ),
-        Text(
-          product.brands?.join(',') ?? '',
-          style: TextStyle(
-            color: AppColors.gray2,
-            fontSize: 20,
+    return Padding(
+      padding: const EdgeInsets.only(right: 20.0, left: 20, top: 20, bottom: 8),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            product.name ?? '',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                color: AppColors.blue),
           ),
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
-        ColoredBox(
-          color: AppColors.gray1,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Text(
-                'Ingrédients',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: AppColors.blue,
-                    fontWeight: FontWeight.bold),
+          const SizedBox(
+            height: 8.0,
+          ),
+          Text(
+            product.brands?.join(',') ?? '',
+            style: TextStyle(
+              color: AppColors.gray2,
+              fontSize: 20,
+            ),
+          ),
+          const SizedBox(
+            height: 30.0,
+          ),
+          ColoredBox(
+            color: AppColors.gray1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  'Ingrédients',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: AppColors.blue,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -174,109 +176,113 @@ class ProductFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      //mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Légumes',
-            value: 'petits pois 41%, carottes 22%',
-            divider: true,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Eau',
-            value: '',
-            divider: true,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Sucre',
-            value: '',
-            divider: true,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Garniture (2,5%)',
-            value: 'Salade, oignon grelot',
-            divider: true,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Sel',
-            value: '',
-            divider: true,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductField(
-            label: 'Arômes naturels',
-            value: '',
-            divider: false,
-          ),
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-        ColoredBox(
-          color: AppColors.gray1,
-          child: Padding(
+    return Padding(
+      padding: const EdgeInsets.only(right: 20.0, left: 20, top: 8, bottom: 4),
+      child: Column(
+        //mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Text(
-                'Substances allergènes',
-                style: TextStyle(
-                    //backgroundColor: AppColors.blue,
-                    fontSize: 20,
-                    color: AppColors.blue,
-                    fontWeight: FontWeight.bold),
+            child: ProductField(
+              label: 'Légumes',
+              value: 'petits pois 41%, carottes 22%',
+              divider: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Eau',
+              value: '',
+              divider: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Sucre',
+              value: '',
+              divider: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Garniture (2,5%)',
+              value: 'Salade, oignon grelot',
+              divider: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Sel',
+              value: '',
+              divider: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ProductField(
+              label: 'Arômes naturels',
+              value: '',
+              divider: false,
+            ),
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          ColoredBox(
+            color: AppColors.gray1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  'Substances allergènes',
+                  style: TextStyle(
+                      //backgroundColor: AppColors.blue,
+                      fontSize: 20,
+                      color: AppColors.blue,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
-        ),
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 8, right: 8, top: 25, bottom: 25),
-          child: ProductField(
-            label: 'Aucune',
-            value: '',
-            divider: false,
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 8, right: 8, top: 25, bottom: 8),
+            child: ProductField(
+              label: 'Aucune',
+              value: '',
+              divider: false,
+            ),
           ),
-        ),
-        ColoredBox(
-          color: AppColors.gray1,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Text(
-                'Additifs',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: AppColors.blue,
-                    fontWeight: FontWeight.bold),
+          ColoredBox(
+            color: AppColors.gray1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  'Additifs',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: AppColors.blue,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8, top: 25, bottom: 8),
-          child: ProductField(
-            label: 'Aucune',
-            value: '',
-            divider: true,
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 8, right: 8, top: 25, bottom: 8),
+            child: ProductField(
+              label: 'Aucune',
+              value: '',
+              divider: false,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -308,7 +314,6 @@ class ProductField extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     color: AppColors.blue,
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),

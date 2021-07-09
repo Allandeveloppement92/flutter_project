@@ -87,7 +87,7 @@ class ProductDetails extends StatelessWidget {
                   height: 10.0,
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 5.0,
                 ),
                 Tableau(),
               ],
@@ -127,29 +127,31 @@ class ProductTitle extends StatelessWidget {
       return SizedBox();
     }
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          product.name ?? '',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 40, color: AppColors.blue),
-        ),
-        const SizedBox(
-          height: 8.0,
-        ),
-        Text(
-          product.brands?.join(',') ?? '',
-          style: TextStyle(
-            color: AppColors.gray2,
-            fontSize: 20,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            product.name ?? '',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                color: AppColors.blue),
           ),
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
-      ],
+          const SizedBox(
+            height: 8.0,
+          ),
+          Text(
+            product.brands?.join(',') ?? '',
+            style: TextStyle(
+              color: AppColors.gray2,
+              fontSize: 20,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -159,165 +161,132 @@ class Tableau extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        TitleColumn(),
-        Tableau2(
-          label: 'Énergie',
-          value100: '293 kj',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'Matières grasses',
-          value100: '0,8 g',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'dont Acides gras saturés',
-          value100: '0,1 g',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'Glucides',
-          value100: '8,4 g',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'dont Sucres',
-          value100: '5,2 g',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'Fibres alimentaires',
-          value100: '5,2 g',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'Protéines',
-          value100: '4,2 g',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'Sel',
-          value100: '0,75 g',
-          value: '?',
-          divider: true,
-        ),
-        Tableau2(
-          label: 'Sodium',
-          value100: '0,295 g',
-          value: '?',
-          divider: false,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          TitleColumn(),
+          Line(
+            label: 'Énergie',
+            gramme: '293 kj',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'Matières grasses',
+            gramme: '0,8 g',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'dont Acides gras saturés',
+            gramme: '0,1 g',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'Glucides',
+            gramme: '8,4 g',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'dont Sucres',
+            gramme: '5,2 g',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'Fibres alimentaires',
+            gramme: '5,2 g',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'Protéines',
+            gramme: '4,2 g',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'Sel',
+            gramme: '0,75 g',
+            part: '?',
+            divider: true,
+          ),
+          Line(
+            label: 'Sodium',
+            gramme: '0,295 g',
+            part: '?',
+            divider: false,
+          ),
+        ],
+      ),
     );
   }
 }
 
-class Tableau2 extends StatelessWidget {
+class Line extends StatelessWidget {
   final String label;
-  final String value;
-  final String value100;
+  final String gramme;
+  final String part;
   final bool divider;
 
-  Tableau2({
+  Line({
     required this.label,
-    required this.value,
-    required this.value100,
+    required this.gramme,
+    required this.part,
     this.divider = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (divider == true) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          IntrinsicHeight(
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        IntrinsicHeight(
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+              ),
+              Expanded(
+                flex: 60,
+                child: Text(
+                  label,
+                  style: TextStyle(fontSize: 18, color: AppColors.blue),
                 ),
-                Expanded(
-                  flex: 44,
-                  child: Text(
-                    label,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
+              ),
+              VerticalDivider(),
+              Expanded(
+                flex: 20,
+                child: Text(
+                  gramme,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18),
                 ),
-                VerticalDivider(),
-                Expanded(
-                  flex: 28,
-                  child: Text(
-                    value100,
-                    textAlign: TextAlign.center,
-                  ),
+              ),
+              VerticalDivider(),
+              Expanded(
+                flex: 20,
+                child: Text(
+                  part,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18),
                 ),
-                VerticalDivider(),
-                Expanded(
-                  flex: 28,
-                  child: Text(
-                    value,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Divider(
-            indent: 10,
-            endIndent: 10,
-          ),
-        ],
-      );
-    } else {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          IntrinsicHeight(
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
-                ),
-                Expanded(
-                  flex: 44,
-                  child: Text(
-                    label,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                VerticalDivider(),
-                Expanded(
-                  flex: 28,
-                  child: Text(
-                    value100,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                VerticalDivider(),
-                Expanded(
-                  flex: 28,
-                  child: Text(
-                    value,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      );
-    }
+        ),
+        this.divider
+            ? Divider(
+                indent: 10,
+                endIndent: 10,
+              )
+            : SizedBox(),
+      ],
+    );
   }
 }
 
@@ -333,26 +302,26 @@ class TitleColumn extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Expanded(
-                flex: 46,
+                flex: 60,
                 child: Text(
                   '',
                 ),
               ),
               VerticalDivider(),
               Expanded(
-                flex: 27,
+                flex: 20,
                 child: Text(
                   'Pour 100g',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, color: AppColors.blue),
                   textAlign: TextAlign.center,
                 ),
               ),
               VerticalDivider(),
               Expanded(
-                flex: 27,
+                flex: 20,
                 child: Text(
                   'Par part',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, color: AppColors.blue),
                   textAlign: TextAlign.center,
                 ),
               ),

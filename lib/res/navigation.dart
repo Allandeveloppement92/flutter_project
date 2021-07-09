@@ -60,7 +60,7 @@ class _NavbarState extends State<Navbar> {
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.blueDark,
         onTap: _onItemTapped,
-        unselectedItemColor: AppColors.yellow,
+        unselectedItemColor: AppColors.gray2,
       ),
     );
   }
